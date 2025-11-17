@@ -10,6 +10,37 @@
 
 
 /*------------------------------------------------------
+* Function Name - getDrinkCost
+*
+* Function Purpose - get the cost of the drink
+*
+* Parameters –  drink: char, a drink
+*
+* Return Values - float, the cost of the chosen drink
+*
+* Author - Daniel Siboni
+-------------------------------------------------------*/
+float getDrinkCost(char drink) {
+    switch (drink)
+    {
+    case COLA:
+        return 5.2;
+    case DIAT_COLA:
+        return 7.2;
+    case ORANGEADE:
+        return 3.4;
+    case SCHWEPPES:
+        return 4.5;
+    case GRAPES:
+        return 3.5;
+    case WATER:
+        return 2.5;
+    default:
+        return 0;
+    }
+}
+
+/*------------------------------------------------------
 * Function Name - handlePayment
 *
 * Function Purpose - handle the costumer payment procces
@@ -52,6 +83,10 @@ int handlePayment(char chosenDrink) {
 
     if(chosenDrink == COLA && twoShekel == 3 && fiveShekel == 3 && tenShekel == 7)
         printf("Special agent, please respond!!!\n\n");
+
+    float salesChange = sumOfPayment - getDrinkCost(chosenDrink);
+
+    print_change(salesChange);
     
     return 0;
 }
