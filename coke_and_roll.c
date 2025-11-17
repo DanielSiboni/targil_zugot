@@ -3,7 +3,7 @@
 /*------------------------------------------------------
 * Function Name - [print_change]
 *
-* Function Purpose - [gives back the change(prints it to the screen)]
+* Function Purpose - [gives back the total change in the available coins(prints it to the screen)]
 *
 * Parameters –  [float change]
 *
