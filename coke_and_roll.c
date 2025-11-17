@@ -1,3 +1,8 @@
+/*------------------------------------------------------
+* Filename: coke_and_roll.c
+* Description:
+* Author:
+-------------------------------------------------------*/
 
 #include <stdio.h>
 
@@ -6,6 +11,30 @@
 #define TWO_SHEKEL_TO_SHEKEL (2)
 #define FIVE_SHEKEL_TO_SHEKEL (5)
 #define TEN_SHEKEL_TO_SHEKEL (10)
+#define COLA ('C')
+#define DIAT_COLA ('D')
+#define ORANGEADE ('O')
+#define SCHWEPPES ('S')
+#define GRAPES ('G')
+#define WATER ('W')
+#define UNDEFINED_DRINK ('0')
+
+char select_drink_input();
+
+int main() {
+    char user_ans = '0';
+    while (user_ans != 'E'){
+
+        //first print - ask the user for the drink he wants.
+        user_ans = select_drink_input();
+        if (user_ans == UNDEFINED_DRINK){
+            continue;
+        }
+        //second print - print the cost.
+
+    }
+    return 0;
+}
 
 /*------------------------------------------------------
 * Function Name - getDrinkCost
@@ -172,4 +201,24 @@ void print_change(float change)
   printf("Machine returned %d coins of 10 NIS\n", count_coin_10);
 
   return;
+}
+
+/*------------------------------------------------------
+* Function Name - select_drink_input.c
+* Function Purpose -  Check the choice of the drink of the user.
+* Parameters – 
+* Return Values - A char represents the choice of drink of the user.
+* Author - Stav Menashe.
+-------------------------------------------------------*/
+char select_drink_input(){
+    char user_input;
+    int check_input;
+    check_input = scanf("%c", user_input);
+
+    if (check_input != 1 || user_input != COLA || user_input != DIAT_COLA || user_input != ORANGEADE || 
+        user_input != SCHWEPPES || user_input != GRAPES || user_input != WATER){
+        printf("No such drink, try again!");
+        return '0';
+    }
+    return user_input;
 }
