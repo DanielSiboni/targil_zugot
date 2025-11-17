@@ -1,4 +1,28 @@
 
+#include <stdio.h>
+
+/*------------------------------------------------------
+* Function Name - [print_user_choices]
+*
+* Function Purpose - [prints the choices to the screen]
+*
+* Parameters –  NONE
+*
+* Return Values - NONE
+*
+* Author - [Kiran Kabaso]
+-------------------------------------------------------*/
+void print_user_choices()
+{
+  printf("Please select the drink you would like to order:\n\n");
+
+  printf("press 'C' for Coca-Cola\n\n");
+  printf("press 'D' for Diet-Cola\n\n");
+  printf("press 'O' for Orangeade\n\n");
+  printf("press 'S' for Schweppes\n\n");
+  printf("press 'G' for Grape juice\n\n");
+  printf("press 'W' for Mineral water\n\n");
+}
 
 #include <stdio.h>
 
