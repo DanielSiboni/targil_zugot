@@ -1,5 +1,4 @@
 
-
 #include <stdio.h>
 
 #define TEN_AGOROT_TO_SHEKEL ((float)0.1)
@@ -7,7 +6,6 @@
 #define TWO_SHEKEL_TO_SHEKEL (2)
 #define FIVE_SHEKEL_TO_SHEKEL (5)
 #define TEN_SHEKEL_TO_SHEKEL (10)
-
 
 /*------------------------------------------------------
 * Function Name - getDrinkCost
@@ -51,33 +49,29 @@ float getDrinkCost(char drink) {
 *
 * Author - Daniel Siboni
 -------------------------------------------------------*/
-int handlePayment(char chosenDrink) {
+int handlePayment(char chosenDrink)
+{
     unsigned int tenAgorot = 0, halfShekel = 0, shekel = 0, twoShekel = 0, fiveShekel = 0, tenShekel = 0;
     printf("Enter amount of 0.1 NIS: ");
-    if(scanf("%u", &tenAgorot) != 1)
+    if (scanf("%u", &tenAgorot) != 1)
         return 1;
     printf("Enter amount of 0.5 NIS: ");
-    if(scanf("%u", &halfShekel) != 1)
+    if (scanf("%u", &halfShekel) != 1)
         return 1;
     printf("Enter amount of 1 NIS: ");
-    if(scanf("%u", &shekel) != 1)
+    if (scanf("%u", &shekel) != 1)
         return 1;
     printf("Enter amount of 2 NIS: ");
-    if(scanf("%u", &twoShekel) != 1)
+    if (scanf("%u", &twoShekel) != 1)
         return 1;
     printf("Enter amount of 5 NIS: ");
-    if(scanf("%u", &fiveShekel) != 1)
+    if (scanf("%u", &fiveShekel) != 1)
         return 1;
     printf("Enter amount of 10 NIS: ");
-    if(scanf("%u", &tenShekel) != 1)
+    if (scanf("%u", &tenShekel) != 1)
         return 1;
 
-    float sumOfPayment = (TEN_AGOROT_TO_SHEKEL * tenAgorot) 
-                        + (HALF_SHEKEL_TO_SHEKEL * halfShekel)
-                        + shekel
-                        + (TWO_SHEKEL_TO_SHEKEL * twoShekel)
-                        + (FIVE_SHEKEL_TO_SHEKEL * fiveShekel)
-                        + (TEN_SHEKEL_TO_SHEKEL * tenShekel);
+    float sumOfPayment = (TEN_AGOROT_TO_SHEKEL * tenAgorot) + (HALF_SHEKEL_TO_SHEKEL * halfShekel) + shekel + (TWO_SHEKEL_TO_SHEKEL * twoShekel) + (FIVE_SHEKEL_TO_SHEKEL * fiveShekel) + (TEN_SHEKEL_TO_SHEKEL * tenShekel);
 
     printf("The machine received payment of %.2f NIS\n\n", sumOfPayment);
 
@@ -91,7 +85,28 @@ int handlePayment(char chosenDrink) {
     return 0;
 }
 
+/*------------------------------------------------------
+* Function Name - [print_user_choices]
+*
+* Function Purpose - [prints the choices to the screen]
+*
+* Parameters –  NONE
+*
+* Return Values - NONE
+*
+* Author - [Kiran Kabaso]
+-------------------------------------------------------*/
+void print_user_choices()
+{
+  printf("Please select the drink you would like to order:\n\n");
 
+  printf("press 'C' for Coca-Cola\n\n");
+  printf("press 'D' for Diet-Cola\n\n");
+  printf("press 'O' for Orangeade\n\n");
+  printf("press 'S' for Schweppes\n\n");
+  printf("press 'G' for Grape juice\n\n");
+  printf("press 'W' for Mineral water\n\n");
+}
 
 /*------------------------------------------------------
 * Function Name - [print_change]
