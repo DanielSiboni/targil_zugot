@@ -6,8 +6,8 @@
 
 #include <stdio.h>
 
-#define TEN_AGOROT_TO_SHEKEL ((float)0.1)
-#define HALF_SHEKEL_TO_SHEKEL ((float)0.5)
+#define TEN_AGOROT_TO_SHEKEL ((float)1/10)
+#define HALF_SHEKEL_TO_SHEKEL ((float)1/2)
 #define TWO_SHEKEL_TO_SHEKEL (2)
 #define FIVE_SHEKEL_TO_SHEKEL (5)
 #define TEN_SHEKEL_TO_SHEKEL (10)
@@ -20,18 +20,21 @@
 #define UNDEFINED_DRINK ('0')
 
 char select_drink_input();
+float getDrinkCost(char drink);
+int handlePayment(char chosenDrink);
+void print_user_choices();
+void print_change(float change);
 
 int main() {
     char user_ans = '0';
     while (user_ans != 'E'){
-
-        //first print - ask the user for the drink he wants.
+        print_user_choices();
         user_ans = select_drink_input();
         if (user_ans == UNDEFINED_DRINK){
             continue;
         }
-        //second print - print the cost.
-
+        printf("The price of the drink is %f NIS\n", getDrinkCost(user_ans));
+        handlePayment(user_ans);
     }
     return 0;
 }
@@ -104,12 +107,15 @@ int handlePayment(char chosenDrink)
 
     printf("The machine received payment of %.2f NIS\n\n", sumOfPayment);
 
-    if(chosenDrink == COLA && twoShekel == 3 && fiveShekel == 3 && tenShekel == 7)
+    if(chosenDrink == COLA && tenAgorot == 1 && twoShekel == 3 && fiveShekel == 3 && tenShekel == 7)
         printf("Special agent, please respond!!!\n\n");
 
+    printf("%f \n", sumOfPayment);
+    printf("%f\n", getDrinkCost(chosenDrink));
     float salesChange = sumOfPayment - getDrinkCost(chosenDrink);
+    printf("%f\n", salesChange);
 
-    print_change(salesChange);
+    //print_change(salesChange);
     
     return 0;
 }
@@ -158,7 +164,9 @@ void print_change(float change)
   int count_coin_05 = 0;
   int count_coin_01 = 0;
 
-  while (change != 0)
+  printf("%f\n", change);
+
+  while (change > 0)
   {
     if (change >= 10)
     {
@@ -190,6 +198,9 @@ void print_change(float change)
       ++count_coin_01;
       change -= 0.1;
     }
+    else{
+        printf("!");
+    }
   }
 
   // print the change
@@ -213,11 +224,11 @@ void print_change(float change)
 char select_drink_input(){
     char user_input;
     int check_input;
-    check_input = scanf("%c", user_input);
+    check_input = scanf("%c", &user_input);
 
-    if (check_input != 1 || user_input != COLA || user_input != DIAT_COLA || user_input != ORANGEADE || 
-        user_input != SCHWEPPES || user_input != GRAPES || user_input != WATER){
-        printf("No such drink, try again!");
+    if (check_input != 1 && user_input != COLA && user_input != DIAT_COLA && user_input != ORANGEADE &&
+        user_input != SCHWEPPES && user_input != GRAPES && user_input != WATER){
+        printf("No such drink, try again!\n");
         return '0';
     }
     return user_input;
